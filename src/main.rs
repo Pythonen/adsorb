@@ -36,6 +36,7 @@ fn connect_wifi(wifi: &mut BlockingWifi<EspWifi<'static>>) {
     info!("Wifi netif up");
 }
 
+// TODO: Get from federated list of ad related domains
 static BLOCKED_DOMAINS: &[&str] = &[
     "doubleclick.net",
     "googlesyndication.com",
@@ -163,8 +164,6 @@ fn main() {
     .unwrap();
 
     connect_wifi(&mut wifi);
-
-    let ip_info = wifi.wifi().sta_netif().get_ip_info().unwrap();
 
     handle_connection();
 }
